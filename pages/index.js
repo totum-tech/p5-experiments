@@ -1,6 +1,5 @@
 import React from "react";
 import Head from "next/head";
-import styles from "../styles/Home.module.css";
 
 const renderArt = ({ height, width }) => (sketch) => {
   let generation = 7;
@@ -32,14 +31,6 @@ const renderArt = ({ height, width }) => (sketch) => {
       255 - generation * 0.1,
     ];
 
-    // if (generation > 360) {
-    //   color = [
-    //     255 - generation * 0.7,
-    //     255 - generation * 0.3,
-    //     255 - generation * 0.1,
-    //   ];
-    // }
-
     drawCircle(
       x * (generation * (1 / density)) + centerX + shake,
       y * (generation * (1 / density)) + centerY + shake,
@@ -53,7 +44,6 @@ const renderArt = ({ height, width }) => (sketch) => {
 
 const draw = (node, { height, width }) =>
   import("p5").then((p5) => {
-    console.log({ height, width });
     new p5.default(renderArt({ height, width }), node);
   });
 
@@ -75,7 +65,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>ART x CODE</title>
         <link rel="icon" href="/favicon.ico" />
